@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Route, NavLink } from "react-router-dom";
+
+import Login from "./login/Login";
+import Users from "./users/Users";
+import Register from "./register/Register";
+
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <>
+        <header>
+          <nav>
+            <NavLink to="/register">Register</NavLink>
+            &nbsp; | &nbsp;
+            <NavLink to="/login">Login</NavLink>
+            &nbsp; | &nbsp;
+            <NavLink to="/users">Users</NavLink>
+          </nav>
         </header>
-      </div>
+        <main>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/users" component={Users} />
+        </main>
+      </>
     );
   }
 }
